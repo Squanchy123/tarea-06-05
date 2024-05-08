@@ -1,0 +1,237 @@
+//1er ejercicio//
+
+#include <iostream>
+
+using namespace std;
+
+int fibonacci(int n) {
+    if (n <= 1)
+        return n;
+    else
+        return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    std::cout << "Ingrese el valor de n para calcular el número de Fibonacci en ese índice: ";
+    std::cin >> n;
+
+    std::cout << "El número de Fibonacci en el índice " << n << " es: " << fibonacci(n) << std::endl;
+
+    return 0;
+}
+
+//2do ejercicio//
+
+#include <iostream>
+
+// Función para calcular el factorial de un número
+int factorial(int n) {
+    if (n <= 1)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}
+
+// Función para calcular la suma de los factoriales de dos números
+int sumaFactoriales(int n, int m) {
+    return factorial(n) + factorial(m);
+}
+
+int main() {
+    int n, m;
+    std::cout << "Ingrese el valor de n: ";
+    std::cin >> n;
+    std::cout << "Ingrese el valor de m: ";
+    std::cin >> m;
+
+    int resultado = sumaFactoriales(n, m);
+    std::cout << "La suma de " << n << "! y " << m << "! es: " << resultado << std::endl;
+
+    return 0;
+}
+
+//3er ejercicio//
+
+#include <iostream>
+#include <cmath>
+
+// Función para calcular la potencia de un número
+double potencia(double base, int exponente) {
+    return pow(base, exponente);
+}
+
+int main() {
+    // Mostrar los cuadrados de los números del 1 al 10
+    for (int i = 1; i <= 10; ++i) {
+        double resultado = potencia(i, 2);
+        std::cout << "El cuadrado de " << i << " es: " << resultado << std::endl;
+    }
+
+    return 0;
+}
+
+//4to ejercicio//
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+// Función para invertir una palabra
+std::string invertirPalabra(const std::string& palabra) {
+    std::string palabraInvertida = palabra;
+    std::reverse(palabraInvertida.begin(), palabraInvertida.end());
+    return palabraInvertida;
+}
+
+// Función para invertir las letras de las palabras en una frase
+std::string invertirFrase(const std::string& frase) {
+    std::string fraseInvertida;
+    std::string palabraActual;
+
+    for (char caracter : frase) {
+        if (caracter != ' ') {
+            palabraActual += caracter;
+        } else {
+            fraseInvertida += invertirPalabra(palabraActual) + " ";
+            palabraActual = "";
+        }
+    }
+
+    fraseInvertida += invertirPalabra(palabraActual); // Agregar la última palabra
+    return fraseInvertida;
+}
+
+int main() {
+    std::string frase;
+    std::cout << "Ingrese una frase: ";
+    std::getline(std::cin, frase);
+
+    std::string fraseInvertida = invertirFrase(frase);
+    std::cout << "La frase invertida es: " << fraseInvertida << std::endl;
+
+    return 0;
+}
+
+//5to ejercicio//
+
+#include <iostream>
+#include <string>
+
+// Función para validar el usuario y la contraseña
+bool validarCredenciales(const std::string& usuario, const std::string& contraseña) {
+    return usuario.length() >= 8 && contraseña.length() >= 8;
+}
+
+int main() {
+    // Casos de prueba
+    std::string casos[4][2] = {
+        {"Hola", "Informática"},
+        {"UsuarioLargo", "User123"},
+        {"UsuarioLargo", "User1234"},
+        {"User", "Pass"}
+    };
+
+    // Validar cada caso de prueba
+    for (int i = 0; i < 4; ++i) {
+        std::string usuario = casos[i][0];
+        std::string contraseña = casos[i][1];
+
+        if (validarCredenciales(usuario, contraseña)) {
+            std::cout << "El usuario '" << usuario << "' y la contraseña '" << contraseña << "' son válidos." << std::endl;
+        } else {
+            std::cout << "El usuario '" << usuario << "' y la contraseña '" << contraseña << "' no son válidos." << std::endl;
+        }
+    }
+
+    return 0;
+}
+
+//phyton primer ejercicio//
+
+def fibonacci(n):
+  if n <= 1:
+      return n
+  else:
+      return fibonacci(n-1) + fibonacci(n-2)
+
+def main():
+  n = int(input("Ingrese el valor de n para calcular el número de Fibonacci en ese índice: "))
+  print("El número de Fibonacci en el índice", n, "es:", fibonacci(n))
+
+if __name__ == "__main__":
+  main()
+
+//python segundo ejercicio//
+
+def factorial(n):
+  if n == 0:
+      return 1
+  else:
+      return n * factorial(n - 1)
+
+def suma_factoriales(n, m):
+  return factorial(n) + factorial(m)
+
+def main():
+  n = int(input("Ingrese el valor de n: "))
+  m = int(input("Ingrese el valor de m: "))
+  resultado = suma_factoriales(n, m)
+  print(f"La suma de {n}! y {m}! es: {resultado}")
+
+if __name__ == "__main__":
+  main()
+
+//python tercer ejercicio//
+
+def potencia(base, exponente):
+    return base ** exponente
+
+def main():
+    for i in range(1, 11):
+        resultado = potencia(i, 2)
+        print(f"El cuadrado de {i} es: {resultado}")
+
+if __name__ == "__main__":
+    main()
+
+//python cuarto ejercicio//
+
+def invertir_palabra(palabra):
+  return palabra[::-1]
+
+def invertir_frase(frase):
+  palabras = frase.split()
+  palabras_invertidas = [invertir_palabra(palabra) for palabra in palabras]
+  return ' '.join(palabras_invertidas)
+
+def main():
+  frase = input("Ingrese una frase: ")
+  frase_invertida = invertir_frase(frase)
+  print("La frase invertida es:", frase_invertida)
+
+if __name__ == "__main__":
+  main()
+
+//python quinto ejercicio//
+
+def validar_credenciales(usuario, contraseña):
+  return len(usuario) >= 8 and len(contraseña) >= 8
+
+def main():
+  casos_prueba = [
+      ("Hola", "Informática"),
+      ("UsuarioLargo", "User123"),
+      ("UsuarioLargo", "User1234"),
+      ("User", "Pass")
+  ]
+
+  for usuario, contraseña in casos_prueba:
+      if validar_credenciales(usuario, contraseña):
+          print(f"El usuario '{usuario}' y la contraseña '{contraseña}' son válidos.")
+      else:
+          print(f"El usuario '{usuario}' y la contraseña '{contraseña}' no son válidos.")
+
+if __name__ == "__main__":
+  main()
+
